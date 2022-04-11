@@ -2,7 +2,7 @@
   <div class="wyr">
     <h2>Please enter your choice!</h2>
     <h3>{{question}}</h3>
-    
+   
     <input type="radio" v-model="choice" v-bind:value="answer1" v-on:change="ChoiceMade"><label>{{answer1}}</label>
     <input type="radio" v-model="choice" v-bind:value="answer2" v-on:change="ChoiceMade"><label>{{answer2}}</label>
   </div>
@@ -16,6 +16,7 @@ export default {
     answer1: String, 
     answer2: String,
   },
+  emits:['answer-changed'],
   data(){
     return{
       choice:''
@@ -23,7 +24,7 @@ export default {
   },
   methods:{
     ChoiceMade(){
-      console.log('choice')
+      console.log(choice)
       this.$emit('answer-changed', this.choice)
     }
   }
