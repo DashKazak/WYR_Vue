@@ -8,12 +8,13 @@
     v-bind:question="question.wyrQuestion"
     v-bind:answer1="question.wyrAnswer1"
     v-bind:answer2="question.wyrAnswer2"
+    v-bind:id="question.id"
     v-on:answer-changed="answerChanged">
     </would-you-rather>
     <div class="userSelection">
       <h3>Your answers:</h3>
-      <ul v-for="answer in answerChanged" v-bind:key="answer" >
-        <li >{{userSelectionMessage}}</li>
+      <ul>
+        <li v-bind="id">{{userSelectionMessage}}</li>
       </ul>
     </div>
 
@@ -61,7 +62,8 @@ export default {
     }
   },
   methods:{
-    answerChanged(choice){
+    answerChanged(choice,id){
+      this.id=id
       this.userSelectionMessage=`Thanks! You chose ${choice}`
     }
   }
